@@ -1,0 +1,27 @@
+This example project shows how to configure Avro, Flume, and Hive together so Flume Events can be queried with Hive upon ingest.
+
+
+1) Define the hive table with hive-create-table.ddl
+2) Execute mvn package to build avro-flume-hive-example-1.0.jar and place in flumes lib directory.
+3) Start a flume agent with flume.conf and ingest data to HDFS.
+4) Query data via hive:
+
+hive> select body from events limit 5;                
+...
+OK
+0
+1
+2
+3
+4
+Time taken: 5.233 seconds
+
+hive> select headers["timestamp"] from events limit 5;
+...
+OK
+1358643304563
+1358643304563
+1358643304563
+1358643304563
+1358643304563
+Time taken: 5.266 seconds
