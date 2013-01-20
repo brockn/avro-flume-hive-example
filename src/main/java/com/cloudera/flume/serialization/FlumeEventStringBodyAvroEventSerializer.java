@@ -52,11 +52,6 @@ public class FlumeEventStringBodyAvroEventSerializer extends AbstractAvroEventSe
     return out;
   }
 
-  /**
-   * A no-op for this simple, special-case implementation
-   * @param event
-   * @return
-   */
   @Override
   protected Container convert(Event event) {
     return new Container(event.getHeaders(), new String(event.getBody(), Charsets.UTF_8));
